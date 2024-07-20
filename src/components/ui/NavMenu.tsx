@@ -5,12 +5,14 @@ type NavigationMenuProps = {
 }
 export const NavigationMenu = ({title, link}:NavigationMenuProps) => {
   return (
+    <div    className="flex items-center text-md  duration-300 hover:underline">
     <Link
-    className="font-medium flex items-center text-sm transition-colors duration-200 hover:underline"
+ 
     to={link}
   >
     {title}
   </Link>
+  </div>
   )
 }
 
