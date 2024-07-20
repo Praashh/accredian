@@ -5,6 +5,7 @@ import moneyRight from "../icons/money-right.svg"
 import moneyRightCenter from "../icons/money-right.svg"
 import moneyRightDowb from "../icons/money-right-down.svg"
 import centerDown from "../icons/center-down.svg"
+import { Link } from "react-router-dom";
 
 const Refer = () => {
     return (
@@ -16,7 +17,7 @@ const Refer = () => {
                     <p className="text-lg lg:text-2xl xl:text-3xl text-[#1A202C]">Get a chance to win</p>
                     <p className="text-lg lg:text-2xl xl:text-3xl text-[#1A202C]">up-to <span className="text-xl lg:text-3xl xl:text-4xl text-[#1A73E8] font-bold">Rs.15,000</span></p>
                 </div>
-                <Button variant="contained" className="mt-4 lg:mt-0">Refer Now</Button>
+                <Link to={'/refer'} ><Button variant="contained" className="mt-4 lg:mt-0">Refer Now</Button></Link>
             </div>
             <div className="w-full lg:w-1/2 h-48 lg:h-full mb-8 lg:mb-0 relative">
                 <img src={img} alt="hero" className="w-full h-full md:h-[56vh] md:mr-20 object-cover rounded-3xl" />

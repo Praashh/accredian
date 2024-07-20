@@ -1,9 +1,9 @@
 import { Button } from "@mui/material"
-import img from "../../assets/refer.png"
+import img from "../../assets/ss.png"
 
 const HowToRefer = () => {
   return (
-    <div className="w-full min-h-[70vh] flex flex-col items-center pb-10 px-4">
+    <div className="w-full min-h-[70vh] flex flex-col items-center px-4">
       <h2 className="flex justify-center pt-10 items-center text-xl md:text-2xl lg:text-3xl text-center">
         How Do I <span className="text-[#1A73E8] ml-2">Refer?</span>
       </h2>
