@@ -3,6 +3,9 @@ import Button from '@mui/material/Button';
 import { Snackbar, TextField } from "@mui/material";
 import Stack from '@mui/material/Stack';
 import { useState } from "react";
+import useAuth from "../../context/UseAuth";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 interface IFormInput {
@@ -13,10 +16,10 @@ interface IFormInput {
 }
 
 export default function SignUp() {
-//   const router = useRouter();
+  const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-//   const { setAuthStatus, setEmail, setName } = useAuth()
+  const { setAuthStatus, setEmail, setName } = useAuth()
   const { register, handleSubmit } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (data.password !== data.confirmPass) {
@@ -24,24 +27,39 @@ export default function SignUp() {
       setOpen(!open)
     } else {
       try {
-        // console.log("trying....");
-        // const newUser = await authService.createUserAccount(data)
-        // console.log(newUser);
-        // setOpen(!open)
-        // setMessage("User Created Successfully!");
-        // setAuthStatus(true)
-        // setName(data.name)
-        // setEmail(data.email)
-        // router.push('/')
+        console.log(data)
+        console.log("trying....");
+        const newUser = await createUserAccount(data)
+        console.log(newUser);
+        setOpen(!open)
+        setMessage("User Created Successfully!");
+        setAuthStatus(true)
+        setName(data.name)
+        setEmail(data.email)
         console.log(data);
       } catch (error) {
 
       }
     }
   }
-
   function handleClose() {
     setOpen(!open);
+  }
+  async function createUserAccount(data:any) {
+      const res = await axios.post(import.meta.env.VITE_BACKEND_URL + 'api/v1/user/register', {
+        name:data.name,
+        email:data.email,
+        password:data.password
+
+      });
+
+      if(res.status === 201){
+        navigate('/')
+      }else{
+        alert("user creation failed!");
+        console.log(res.data);
+        
+      }
   }
 
   return (
